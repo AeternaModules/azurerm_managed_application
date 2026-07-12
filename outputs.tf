@@ -1,3 +1,7 @@
+output "managed_applications_id" {
+  description = "Map of id values across all managed_applications, keyed the same as var.managed_applications"
+  value       = { for k, v in azurerm_managed_application.managed_applications : k => v.id }
+}
 output "managed_applications_application_definition_id" {
   description = "Map of application_definition_id values across all managed_applications, keyed the same as var.managed_applications"
   value       = { for k, v in azurerm_managed_application.managed_applications : k => v.application_definition_id }
