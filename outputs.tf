@@ -32,7 +32,7 @@ output "managed_applications_parameter_values" {
 }
 output "managed_applications_plan" {
   description = "Map of plan values across all managed_applications, keyed the same as var.managed_applications"
-  value       = { for k, v in azurerm_managed_application.managed_applications : k => v.plan if v.plan != null && length(v.plan) > 0 }
+  value       = { for k, v in azurerm_managed_application.managed_applications : k => one(v.plan) if v.plan != null && length(v.plan) > 0 }
 }
 output "managed_applications_resource_group_name" {
   description = "Map of resource_group_name values across all managed_applications, keyed the same as var.managed_applications"
